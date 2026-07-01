@@ -1,18 +1,18 @@
 # AeroBand Pulse Landing Page
 
-Landing page demo cho bai test HELICORP vong 2, xay dung bang Vite, React, JavaScript va CSS3.
+Demo landing page for the HELICORP round 2 website development test, built with Vite, React, JavaScript, and CSS3.
 
-## Tinh nang
+## Features
 
-- Hero section gioi thieu san pham thiet bi deo thong minh.
-- Section tinh nang noi bat, thong so ky thuat va form dang ky nhan tin.
-- Responsive desktop/mobile, dark mode, micro-interactions va animation nhe.
-- Mini commerce: san pham yeu thich, gio hang va danh sach da xem.
-- Chatbot demo o goc man hinh.
-- Form co validation va ho tro gui du lieu ve webhook qua bien moi truong.
-- SEO technical: title, description, Open Graph va theme color.
+- Hero section for a smart wearable product.
+- Key features, technical specifications, and newsletter signup form.
+- Responsive desktop/mobile layout, dark mode, micro-interactions, and lightweight animation.
+- Mini commerce: favorites, cart, and recently viewed products.
+- Chatbot demo in the bottom corner.
+- Validated lead form with optional webhook integration through an environment variable.
+- SEO technical: title, description, Open Graph, and theme color.
 
-## Chay local
+## Local Development
 
 ```bash
 npm install
@@ -25,19 +25,19 @@ npm run dev
 npm run build
 ```
 
-## Cau hinh webhook
+## Webhook Configuration
 
-Tao file `.env.local` neu can gui lead ra ben ngoai:
+Create `.env.local` if you want to send leads to an external webhook:
 
 ```bash
 VITE_LEAD_WEBHOOK_URL=https://your-webhook-url.example
 ```
 
-Neu khong co bien nay, form van validation va hien thong bao thanh cong ma khong goi network.
+If this variable is not set, the form still validates and shows a success message without making a network request.
 
 ## Deploy Vercel
 
 - Framework preset: `Vite`.
 - Build command: `npm run build`.
 - Output directory: `dist`.
-- Them `VITE_LEAD_WEBHOOK_URL` trong Environment Variables neu dung webhook.
+- Add `VITE_LEAD_WEBHOOK_URL` to Environment Variables if you use a webhook.

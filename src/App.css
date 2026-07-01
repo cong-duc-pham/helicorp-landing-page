@@ -141,15 +141,16 @@ main {
   place-items: center;
   border-radius: 22px;
   background:
-    radial-gradient(circle at 34% 28%, rgba(17, 140, 126, 0.26), transparent 30%),
-    linear-gradient(145deg, var(--panel), var(--surface));
+    radial-gradient(circle at 34% 28%, rgba(17, 140, 126, 0.16), transparent 32%),
+    linear-gradient(145deg, #f1f6f3, #ffffff);
   box-shadow: var(--shadow);
 }
 
 .hero-visual img {
-  width: min(74%, 420px);
+  width: min(72%, 410px);
   height: auto;
-  filter: drop-shadow(0 28px 42px rgba(0, 0, 0, 0.22));
+  border-radius: 18px;
+  filter: drop-shadow(0 22px 34px rgba(19, 32, 28, 0.18));
   animation: float 5s ease-in-out infinite;
 }
 
@@ -182,6 +183,7 @@ main {
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
   padding: 86px 0;
+  scroll-margin-top: 96px;
 }
 
 .section-heading {
@@ -273,13 +275,18 @@ dd {
   position: absolute;
   top: 18px;
   right: 18px;
-  width: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
   height: 42px;
-  padding: 0;
+  padding: 0 14px;
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text-strong);
   background: var(--panel);
+  line-height: 1;
+  text-align: center;
 }
 
 .heart.active {
@@ -290,6 +297,10 @@ dd {
   display: grid;
   align-content: end;
   gap: 12px;
+}
+
+.product-card h3 {
+  padding-right: 76px;
 }
 
 .product-card button:not(.heart),
@@ -306,11 +317,33 @@ dd {
   color: var(--text);
 }
 
-.commerce-bar span {
+.commerce-bar span,
+.commerce-bar button {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 10px 12px;
   background: var(--surface);
+}
+
+.commerce-bar button {
+  color: var(--text-strong);
+  cursor: pointer;
+}
+
+.commerce-bar button:not(:disabled) {
+  color: #ffffff;
+  border-color: #f05a28;
+  background: #f05a28;
+}
+
+.commerce-bar button:disabled {
+  color: var(--text);
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+#shop {
+  padding-bottom: 52px;
 }
 
 .newsletter-section {
@@ -318,6 +351,7 @@ dd {
   grid-template-columns: 0.85fr 1fr;
   gap: 44px;
   align-items: start;
+  padding-top: 52px;
 }
 
 form {
@@ -374,11 +408,10 @@ footer a {
 
 .toast {
   position: fixed;
-  left: 50%;
+  left: 22px;
   bottom: 24px;
   z-index: 30;
-  max-width: min(520px, calc(100% - 40px));
-  transform: translateX(-50%);
+  max-width: min(420px, calc(100% - 120px));
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 13px 16px;
@@ -476,6 +509,14 @@ footer a {
     padding: 58px 0;
   }
 
+  #shop {
+    padding-bottom: 36px;
+  }
+
+  .newsletter-section {
+    padding-top: 36px;
+  }
+
   .spec-list div {
     grid-template-columns: 1fr;
     gap: 6px;
@@ -483,5 +524,11 @@ footer a {
 
   footer {
     flex-direction: column;
+  }
+
+  .toast {
+    right: 82px;
+    left: 16px;
+    max-width: none;
   }
 }
