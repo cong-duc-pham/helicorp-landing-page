@@ -165,6 +165,7 @@ function App() {
   const [chatInput, setChatInput] = useState('')
   const [chatTyping, setChatTyping] = useState(false)
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('top')
   const scrollNoticeShown = useRef(false)
   
   const [chatMessages, setChatMessages] = useState([
@@ -188,6 +189,29 @@ function App() {
 
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Scroll Spy: highlight active nav link based on visible section
+  useEffect(() => {
+    const sectionIds = ['features', 'specs', 'shop', 'newsletter']
+    const observers = []
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id)
+          }
+        },
+        { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+      )
+      observer.observe(el)
+      observers.push(observer)
+    })
+
+    return () => observers.forEach((obs) => obs.disconnect())
   }, [])
 
   // Auto-clear toast notice after 3 seconds
@@ -389,9 +413,9 @@ Answer this user query concisely in the same language as their query: "${query}"
           <span>A</span>AeroBand
         </a>
         <div className="nav-links">
-          <a href="#features">Features</a>
-          <a href="#specs">Specs</a>
-          <a href="#shop">Preorder</a>
+          <a href="#features" className={activeSection === 'features' ? 'nav-active' : ''}>Features</a>
+          <a href="#specs" className={activeSection === 'specs' ? 'nav-active' : ''}>Specs</a>
+          <a href="#shop" className={activeSection === 'shop' || activeSection === 'newsletter' ? 'nav-active' : ''}>Preorder</a>
         </div>
         <div style={{ display: 'flex', gap: '10px' }}>
           {/* Cart Icon trigger for Drawer */}

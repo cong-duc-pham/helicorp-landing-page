@@ -98,6 +98,16 @@ main {
   width: 100%;
 }
 
+/* Scroll Spy: active nav link highlight */
+.nav-links a.nav-active {
+  color: var(--text-strong);
+}
+
+.nav-links a.nav-active::after {
+  width: 100%;
+  background: var(--primary);
+}
+
 button svg,
 .icon-button svg,
 .primary-button svg,
